@@ -25,7 +25,7 @@ def get_test_file():
 
 
 @app.get("/{seed}")
-def read_item(seed, response: Response):
+def get_random_test_by_seed(seed, response: Response):
     response.headers["api-version"] = API_VERSION
 
     try:
