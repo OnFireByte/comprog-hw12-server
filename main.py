@@ -73,12 +73,6 @@ def animate_clear(board):
     return time_line
 
 
-from fastapi import FastAPI, Response
-
-
-app = FastAPI()
-
-
 def create_board(board_width, board_height, p=None):
     return np.random.choice(
         6,
@@ -189,9 +183,21 @@ def random_animate_clear():
     }
 
 
+from fastapi import FastAPI, Response
+from fastapi.responses import FileResponse
+
+
+app = FastAPI()
+
+
 @app.get("/")
 def default():
     return {"message": "You forgot to add a seed!"}
+
+
+@app.get("/test_file")
+def get_test_file():
+    return FileResponse("test.py")
 
 
 @app.get("/{seed}")
