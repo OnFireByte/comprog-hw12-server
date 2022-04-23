@@ -21,7 +21,7 @@ def default():
 
 @app.get("/test_file")
 def get_test_file():
-    return FileResponse("test.py")
+    return FileResponse("public/test.py")
 
 
 @app.get("/{seed}")
