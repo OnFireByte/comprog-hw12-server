@@ -17,4 +17,4 @@ I'm not sure if my teacher will allow me to share the home work file or descript
 
 ## Running the server
 
-FastAPI's docs recommend using [Uvicorn](https://www.uvicorn.org/) for development and [Gunicorn](https://gunicorn.org/) for production, you can read more at [FastAPI's Docs](https://fastapi.tiangolo.com/deployment/manually/).
+FastAPI's documentation recommends using [Uvicorn](https://www.uvicorn.org/) for development and [Gunicorn](https://gunicorn.org/) for production; for additional information, see [FastAPI's documentation](https://fastapi.tiangolo.com/deployment/manually/).
