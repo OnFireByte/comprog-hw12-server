@@ -77,12 +77,16 @@ def print_test(param, expect):
     for i, e in enumerate(param, 1):
         if type(e) == list and type(e[0]) == list:
             print(f"Input {i}:")
-            print(np.array(e))
+            print(repr(np.array(e)))
         else:
             print(f"Input {i}: {e}")
     print("\nExpect:")
     if type(expect) == list:
-        print(np.array(expect))
+        print(
+            repr(np.array(expect))
+            if type(expect[0][0]) != list
+            else repr([np.array(x) for x in expect])
+        )
     else:
         print(expect)
     print("-------------")
