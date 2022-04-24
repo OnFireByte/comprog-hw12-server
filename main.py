@@ -12,7 +12,7 @@ API_VERSION = "1.0.0"
 
 
 app = FastAPI()
-favicon_path = "favicon.ico"
+favicon_path = "public/favicon.ico"
 
 
 @app.get("/")
