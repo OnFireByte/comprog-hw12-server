@@ -26,6 +26,11 @@ def serve_test_file():
     return FileResponse("public/test.py")
 
 
+@app.get("/favicon.ico")
+async def serve_favicon():
+    return FileResponse(favicon_path)
+
+
 @app.get("/{seed}")
 def get_random_test_by_seed(seed: int, response: Response):
     response.headers["api-version"] = API_VERSION
@@ -43,8 +48,3 @@ def get_random_test_by_seed(seed: int, response: Response):
         "animate_drop": [random_animate_drop() for _ in range(TEST_COUNT)],
         "animate_clear": [random_animate_clear() for _ in range(TEST_COUNT)],
     }
-
-
-@app.get("/favicon.ico")
-async def serve_favicon():
-    return FileResponse(favicon_path)
