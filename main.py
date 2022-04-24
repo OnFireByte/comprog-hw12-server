@@ -21,6 +21,11 @@ def go_to_random_seed():
     return RedirectResponse(url=f"/{random_seed}")
 
 
+@app.get("/test_file")
+def serve_test_file():
+    return FileResponse("public/test.py")
+
+
 @app.get("/{seed}")
 def get_random_test_by_seed(seed: int, response: Response):
     response.headers["api-version"] = API_VERSION
@@ -38,11 +43,6 @@ def get_random_test_by_seed(seed: int, response: Response):
         "animate_drop": [random_animate_drop() for _ in range(TEST_COUNT)],
         "animate_clear": [random_animate_clear() for _ in range(TEST_COUNT)],
     }
-
-
-@app.get("/test_file")
-def serve_test_file():
-    return FileResponse("public/test.py")
 
 
 @app.get("/favicon.ico")
