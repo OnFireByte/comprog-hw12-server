@@ -13,7 +13,7 @@ verbose = True
 
 # -----------------
 
-seed = random.randint(0, 100000000) if custom_seed is None else custom_seed
+seed = random.randint(0, 2 ** 32 - 1) if custom_seed is None else custom_seed
 
 
 url = f"https://onfirebyte.tk/{seed}"

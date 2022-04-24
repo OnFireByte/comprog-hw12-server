@@ -43,3 +43,6 @@ def get_random_test_by_seed(seed, response: Response):
         "animate_drop": [random_animate_drop() for _ in range(TEST_COUNT)],
         "animate_clear": [random_animate_clear() for _ in range(TEST_COUNT)],
     }
+@app.get("/favicon.ico")
+async def serve_favicon():
+    return FileResponse(favicon_path)
