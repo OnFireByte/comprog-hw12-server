@@ -1,6 +1,6 @@
 # Com Prog HW12 2022/2 server
 
-Very small and simple back-end project that serve random generated test cases for 2110101's HW12 2022/2 via REST API by FastAPI.
+A very small and simple back-end project that serve random generated test cases for 2110101's HW12 2022/2 via REST API by FastAPI.
 
 I'm not sure if my teacher will allow me to share the home work file or description with an outsider. So I'm not going to do it, but you can still read my homework solution at utils/func.py to get a sense of what homework is about.
 
