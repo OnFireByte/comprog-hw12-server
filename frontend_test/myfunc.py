@@ -12,7 +12,7 @@ def get_time_cap(board, time_caps):
     score_by_time = board.reshape(len(time_caps), -1).sum(axis=1)
     time_caps_array = np.array(time_caps)
     res = time_caps_array[score_by_time > 0]
-    return res[0] if res.size > 0 else time_caps[-1]
+    return res[0] if len(res) > 0 else time_caps[-1]
 
 
 def rotate_right(shape):
