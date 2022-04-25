@@ -12,7 +12,7 @@ def get_time_cap(board, time_caps):
     score_by_time = board.reshape(len(time_caps), -1).sum(axis=1)
     time_caps_array = np.array(time_caps)
     res = time_caps_array[score_by_time > 0]
-    return res[0] if len(res) > 0 else time_caps[-1]
+    return res[0] if res.size > 0 else time_caps[-1]
 
 
 def rotate_right(shape):
@@ -27,18 +27,26 @@ def animate_drop(board, shape, c):
     time_line = []
     width = shape.shape[1]
     height = shape.shape[0]
-    for i in range(board.shape[0]):
-        slot = board[i : i + height, c : c + width]
-        # is_empty = np.sum()
-        if slot.shape != shape.shape:
-            break
-        is_empty = np.sum(slot[shape > 0]) == 0
-        if is_empty:
-            new_board = board * 1
-            new_board[i : i + height, c : c + width] += shape
-            time_line.append(new_board)
+    for i in range(1 - height, board.shape[0]):
+        if i >= 0:
+            slot = board[i : i + height, c : c + width]
         else:
+            slot = board[: i + height, c : c + width]
+        # is_empty = np.sum()
+        if slot.shape != shape.shape and i >= 0:
             break
+        if i >= 0:
+            is_empty = np.sum(slot[shape > 0]) == 0
+            if is_empty:
+                new_board = board * 1
+                new_board[i : i + height, c : c + width] += shape
+                time_line.append(new_board)
+            else:
+                break
+        else:
+            is_empty = np.sum(slot[shape[-i:] > 0]) == 0
+            if not is_empty:
+                break
     return time_line
 
 
@@ -67,11 +75,3 @@ def animate_clear(board):
         floor = cleared_board.shape[0] - 1
 
     return time_line
-
-
-# board = np.array(
-#     [[3, 3, 0, 0], [2, 2, 2, 6], [0, 5, 5, 4], [7, 7, 7, 6], [0, 0, 0, 0], [4, 0, 1, 1]]
-# )
-
-# for time in animate_clear(board):
-#     print(time)

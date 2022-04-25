@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def get_score(board):
     col_count = board.shape[1]
     has_block = board > 0
@@ -26,18 +27,27 @@ def animate_drop(board, shape, c):
     time_line = []
     width = shape.shape[1]
     height = shape.shape[0]
-    for i in range(board.shape[0]):
-        slot = board[i : i + height, c : c + width]
-        # is_empty = np.sum()
-        if slot.shape != shape.shape:
-            break
-        is_empty = np.sum(slot[shape > 0]) == 0
-        if is_empty:
-            new_board = board * 1
-            new_board[i : i + height, c : c + width] += shape
-            time_line.append(new_board)
+    for i in range(1 - height, board.shape[0]):
+        if i >= 0:
+            slot = board[i : i + height, c : c + width]
         else:
+
+            slot = board[: i + height, c : c + width]
+        # is_empty = np.sum()
+        if slot.shape != shape.shape and i >= 0:
             break
+        if i >= 0:
+            is_empty = np.sum(slot[shape > 0]) == 0
+            if is_empty:
+                new_board = board * 1
+                new_board[i : i + height, c : c + width] += shape
+                time_line.append(new_board)
+            else:
+                break
+        else:
+            is_empty = np.sum(slot[shape[-i:] > 0]) == 0
+            if not is_empty:
+                break
     return time_line
 
 
