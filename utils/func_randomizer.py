@@ -88,7 +88,7 @@ def random_animate_drop():
         board_width, board_height, p=[1 - not_zero_prob] + [not_zero_prob / 5] * 5
     )
 
-    if random.randint(0, 10):
+    if random.randint(0, 6):
         board[: random.randint(0, board_height - 1), :] = 0
     c = random.randint(0, board_width - shape.shape[1])
     return {
