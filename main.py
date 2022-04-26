@@ -8,7 +8,7 @@ from utils.func_randomizer import *
 
 
 TEST_COUNT = 10
-API_VERSION = "1.1.0"
+API_VERSION = "1.2.0"
 
 
 app = FastAPI()

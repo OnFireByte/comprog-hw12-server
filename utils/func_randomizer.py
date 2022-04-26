@@ -68,7 +68,7 @@ def random_rotate_left():
 
 
 def random_animate_drop():
-    not_zero_prob = 0.2
+    not_zero_prob = random.uniform(0.25, 0.5)
     shapes = [
         [[1, 1, 1], [1, 0, 0]],
         [[2, 2, 2], [0, 0, 2]],
@@ -88,7 +88,7 @@ def random_animate_drop():
         board_width, board_height, p=[1 - not_zero_prob] + [not_zero_prob / 5] * 5
     )
 
-    if random.randint(0, 6):
+    if random.randint(0, 4):
         board[: random.randint(0, board_height - 1), :] = 0
     c = random.randint(0, board_width - shape.shape[1])
     return {
